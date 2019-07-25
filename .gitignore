@@ -333,3 +333,5 @@ ASALocalRun/
 .sonarqube/
 lcov.*
 coverage.json
+example/result.csv
+example/test.csv
