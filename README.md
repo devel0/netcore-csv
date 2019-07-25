@@ -21,6 +21,33 @@
 
 ## Quickstart
 
+- create console project
+
+```sh
+dotnet new console -n example
+cd example
+```
+
+- add reference to netcore-sci ( check latest version [here](https://www.nuget.org/packages/netcore-sci/) )
+
+```sh
+dotnet add package netcore-csv --version 0.0.2
+```
+
+if prefer to link source code directly to stepin with debugger add project reference instead
+
+```sh
+dotnet add reference path_to/netcore-csv/netcore-csv.csproj
+```
+
+for some useful sci extensions include [netcore-sci](https://github.com/devel0/netcore-sci#quickstart)
+
+```
+dotnet add package netcore-sci --version 1.0.27
+```
+
+- setup example code
+
 ```csharp
 using System;
 using System.Linq;
