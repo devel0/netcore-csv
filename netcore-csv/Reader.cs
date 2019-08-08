@@ -118,7 +118,10 @@ namespace SearchAThing
                             prop = ss[idx];
                         }
 
-                        col.Property.SetValue(obj, prop);
+                        if (col.Property.PropertyType.IsEnum)
+                            col.Property.SetValue(obj, Enum.Parse(col.Property.PropertyType, (string)prop));
+                        else
+                            col.Property.SetValue(obj, prop);
                     }
 
                     current = obj;

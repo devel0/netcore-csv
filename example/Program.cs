@@ -7,6 +7,12 @@ using SearchAThing.CSV;
 namespace test
 {
 
+    public enum TestEnum
+    {
+        atype,
+        btype,    
+    }
+
     public class MyData
     {
         public int i10 { get; set; }
@@ -36,6 +42,7 @@ namespace test
         public double v20 { get; set; }
         [CsvColumnOrder(0)]
         public double firstcol { get; set; }
+        public TestEnum envar { get; set; }
     }
 
     class Program
@@ -77,7 +84,8 @@ namespace test
                         v20 = rnd.NextDouble() * 1e9,
                         i10 = rnd.Next(1, 10),
                         i20 = rnd.Next(1, 20),
-                        s1 = $"str:[{rnd.Next()}]"
+                        s1 = $"str:[{rnd.Next()}]",
+                        envar = TestEnum.atype,
                     };
 
                     csv.Push(d);
