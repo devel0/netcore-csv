@@ -1,6 +1,7 @@
 # netcore-csv
 
 [![NuGet Badge](https://buildstats.info/nuget/netcore-csv)](https://www.nuget.org/packages/netcore-csv/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv?ref=badge_shield)
 
 .NET core CSV
 
@@ -233,3 +234,7 @@ dotnet sln netcore-csv.sln add netcore-csv/netcore-csv.csproj
 dotnet sln netcore-csv.sln add example/example.csproj
 dotnet build
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv?ref=badge_large)
