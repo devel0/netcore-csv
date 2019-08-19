@@ -20,15 +20,24 @@ namespace SearchAThing
             public readonly string DecimalSeparator;
             public readonly bool DecimalSeparatorIsInvariant;
 
+            public readonly IReadOnlyDictionary<string, string> PropNameHeaderMapping;
+
             List<CsvColumn> columns = null;
             public IReadOnlyList<CsvColumn> Columns => columns;
 
-            public CsvFile(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".")
+            /// <summary>
+            /// csv reader/writer base class.
+            /// if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
+            /// (useful if can't evaluated at compile time using CsvHeaderAttribute).
+            /// </summary>            
+            public CsvFile(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".",
+                IReadOnlyDictionary<string, string> propNameHeaderMapping = null)
             {
                 Pathfilename = pathfilename;
                 FieldSeparator = fieldSeparator;
                 DecimalSeparator = decimalSeparator;
                 DecimalSeparatorIsInvariant = decimalSeparator == ".";
+                PropNameHeaderMapping = propNameHeaderMapping;
 
                 columns = new List<CsvColumn>();
                 var props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
@@ -40,6 +49,13 @@ namespace SearchAThing
                         if (q.Count() > 0)
                         {
                             header = q.First().Header;
+                        }
+                    }
+                    {
+                        string str = null;
+                        if (propNameHeaderMapping != null && propNameHeaderMapping.TryGetValue(prop.Name, out str))
+                        {
+                            header = str;
                         }
                     }
                     var order = 1000;

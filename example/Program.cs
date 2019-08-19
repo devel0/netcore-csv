@@ -3,6 +3,7 @@ using System.Linq;
 using SearchAThing;
 using System.Diagnostics;
 using SearchAThing.CSV;
+using System.Collections.Generic;
 
 namespace test
 {
@@ -10,7 +11,7 @@ namespace test
     public enum TestEnum
     {
         atype,
-        btype,    
+        btype,
     }
 
     public class MyData
@@ -56,7 +57,7 @@ namespace test
 
                 using var csv = new CsvWriter<MyData>("test.csv");
 
-                var rnd = new Random();                
+                var rnd = new Random();
 
                 for (int i = 0; i < CNT; ++i)
                 {
@@ -100,6 +101,9 @@ namespace test
 
                 using var csv = new CsvReader<MyData>("test.csv");
 
+                var customHeader = new Dictionary<string, string>();
+                customHeader.Add("v3Mean", "v3Mean (Custom)");
+
                 csv
                     .GroupBy(w => w.i10)
                     .Select(w => new
@@ -114,19 +118,19 @@ namespace test
                         v5Mean = w.Select(w => w.v5).Mean(),
                         v6Mean = w.Select(w => w.v6).Mean(),
                         v7Mean = w.Select(w => w.v7).Mean(),
-                        v8Mean = w.Select(w => w.v8).Mean(),                        
-                        v9Mean = w.Select(w => w.v9).Mean(),                        
-                        v10Mean = w.Select(w => w.v10).Mean(),                        
-                        v11Mean = w.Select(w => w.v11).Mean(),                        
-                        v12Mean = w.Select(w => w.v12).Mean(),                        
-                        v13Mean = w.Select(w => w.v13).Mean(),                        
-                        v14Mean = w.Select(w => w.v14).Mean(),                        
-                        v15Mean = w.Select(w => w.v15).Mean(),                        
-                        v16Mean = w.Select(w => w.v16).Mean(),                        
-                        v17Mean = w.Select(w => w.v17).Mean(),                                                
-                        v18Mean = w.Select(w => w.v18).Mean(),                                                
-                        v20Mean = w.Select(w => w.v20).Mean(),                       
-                    }).ToCSV("result.csv");
+                        v8Mean = w.Select(w => w.v8).Mean(),
+                        v9Mean = w.Select(w => w.v9).Mean(),
+                        v10Mean = w.Select(w => w.v10).Mean(),
+                        v11Mean = w.Select(w => w.v11).Mean(),
+                        v12Mean = w.Select(w => w.v12).Mean(),
+                        v13Mean = w.Select(w => w.v13).Mean(),
+                        v14Mean = w.Select(w => w.v14).Mean(),
+                        v15Mean = w.Select(w => w.v15).Mean(),
+                        v16Mean = w.Select(w => w.v16).Mean(),
+                        v17Mean = w.Select(w => w.v17).Mean(),
+                        v18Mean = w.Select(w => w.v18).Mean(),
+                        v20Mean = w.Select(w => w.v20).Mean(),
+                    }).ToCSV("result.csv", fieldSeparator: ",", decimalSeparator: ".", customHeader);
 
                 System.Console.WriteLine($"queried [{CNT}] rows in {stopw.Elapsed}");
             }

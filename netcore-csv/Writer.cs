@@ -16,14 +16,17 @@ namespace SearchAThing
         /// </summary>
         public class CsvWriter<T> : CsvFile<T>, IDisposable where T : class
         {
-            StreamWriter sw = null;
+            StreamWriter sw = null;            
 
             /// <summary>
-            /// construct a csv writer to write on given filename with field and decimal separators
+            /// construct a csv writer to write on given filename with field and decimal separators.
+            /// if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
+            /// (useful if can't evaluated at compile time using CsvHeaderAttribute.
             /// </summary>
-            public CsvWriter(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".") :
-                base(pathfilename, fieldSeparator, decimalSeparator)
-            {
+            public CsvWriter(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".",
+                IReadOnlyDictionary<string, string> propNameHeaderMapping = null) :
+                base(pathfilename, fieldSeparator, decimalSeparator, propNameHeaderMapping)
+            {                
             }
 
             /// <summary>
@@ -88,12 +91,15 @@ namespace SearchAThing
     {
 
         /// <summary>
-        /// generate csv file from this object enumerable using properties name and their order as csv header
+        /// generate csv file from this object enumerable using properties name and their order as csv header.
+        /// if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
+        /// (useful if can't evaluated at compile time using CsvHeaderAttribute.
         /// </summary>
         public static void ToCSV<T>(this IEnumerable<T> coll,
-            string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".") where T : class
+            string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".",
+            IReadOnlyDictionary<string, string> propNameHeaderMapping = null) where T : class
         {
-            using var csv = new CsvWriter<T>(pathfilename, fieldSeparator, decimalSeparator);
+            using var csv = new CsvWriter<T>(pathfilename, fieldSeparator, decimalSeparator, propNameHeaderMapping);
 
             foreach (var x in coll) csv.Push(x);
         }

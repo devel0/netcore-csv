@@ -13,7 +13,7 @@ public abstract class CsvFile
 ## Constructors
 |**Name**|**Summary**|
 |---|---|
-|[CsvFile<T>(string, string, string)](CsvFile-1/ctors.md)||
+|[CsvFile<T>(string, string, string, IReadOnlyDictionary<string, string>)](CsvFile-1/ctors.md)|csv reader/writer base class.<br/>            if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.<br/>            (useful if can't evaluated at compile time using CsvHeaderAttribute).|
 ## Methods
 |**Name**|**Summary**|
 |---|---|
@@ -30,4 +30,5 @@ public abstract class CsvFile
 - [DecimalSeparatorIsInvariant](CsvFile-1/DecimalSeparatorIsInvariant.md)
 - [FieldSeparator](CsvFile-1/FieldSeparator.md)
 - [Pathfilename](CsvFile-1/Pathfilename.md)
+- [PropNameHeaderMapping](CsvFile-1/PropNameHeaderMapping.md)
 ## Conversions

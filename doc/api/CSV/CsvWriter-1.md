@@ -13,7 +13,7 @@ public class CsvWriter : SearchAThing.CSV.CsvFile<T>, System.IDisposable
 ## Constructors
 |**Name**|**Summary**|
 |---|---|
-|[CsvWriter<T>(string, string, string)](CsvWriter-1/ctors.md)|construct a csv writer to write on given filename with field and decimal separators|
+|[CsvWriter<T>(string, string, string, IReadOnlyDictionary<string, string>)](CsvWriter-1/ctors.md)|construct a csv writer to write on given filename with field and decimal separators.<br/>            if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.<br/>            (useful if can't evaluated at compile time using CsvHeaderAttribute.|
 ## Methods
 |**Name**|**Summary**|
 |---|---|
@@ -32,4 +32,5 @@ public class CsvWriter : SearchAThing.CSV.CsvFile<T>, System.IDisposable
 - [DecimalSeparatorIsInvariant](CsvWriter-1/DecimalSeparatorIsInvariant.md)
 - [FieldSeparator](CsvWriter-1/FieldSeparator.md)
 - [Pathfilename](CsvWriter-1/Pathfilename.md)
+- [PropNameHeaderMapping](CsvWriter-1/PropNameHeaderMapping.md)
 ## Conversions
