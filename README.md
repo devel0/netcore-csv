@@ -72,6 +72,7 @@ namespace example_01
 
     public class MyData
     {
+        public int intNr { get; set; }
         public string name { get; set; }
         public double val { get; set; }
         public TestEnum enumVal { get; set; }
@@ -87,12 +88,14 @@ namespace example_01
             {
                 csv.Push(new MyData
                 {
+                    intNr = 10,
                     name = "name1",
                     val = 11.2,
                     enumVal = TestEnum.enumA
                 });
                 csv.Push(new MyData
                 {
+                    intNr = 25,
                     name = "name2",
                     val = 13.4,
                     enumVal = TestEnum.enumB
@@ -104,11 +107,13 @@ namespace example_01
             {
                 csv.Push(new MyData
                 {
+                    intNr = 30,
                     name = "name3",
                     val = 44.5
                 });
                 csv.Push(new MyData
                 {
+                    intNr = 35,
                     name = "name4",
                     val = 33.2
                 });
@@ -134,6 +139,20 @@ namespace example_01
         }
     }
 }
+```
+
+- output
+
+```
+"intNr","name","val","enumVal"
+10,"name1",11.2,"enumA"
+25,"name2",13.4,"enumB"
+30,"name3",44.5,"unknown"
+35,"name4",33.2,"unknown"
+
+enum:enumA sum:11.2
+enum:enumB sum:13.4
+enum:unknown sum:77.7
 ```
 
 ### example-03
@@ -295,7 +314,7 @@ namespace test
 }
 ```
 
-- execution
+- output
 
 ```sh
 devel0@main:/opensource/devel0/netcore-csv$ dotnet run -p examples/example-03

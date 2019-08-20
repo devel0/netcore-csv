@@ -14,6 +14,7 @@ namespace example_01
 
     public class MyData
     {
+        public int intNr { get; set; }
         public string name { get; set; }
         public double val { get; set; }
         public TestEnum enumVal { get; set; }
@@ -29,12 +30,14 @@ namespace example_01
             {
                 csv.Push(new MyData
                 {
+                    intNr = 10,
                     name = "name1",
                     val = 11.2,
                     enumVal = TestEnum.enumA
                 });
                 csv.Push(new MyData
                 {
+                    intNr = 25,
                     name = "name2",
                     val = 13.4,
                     enumVal = TestEnum.enumB
@@ -46,11 +49,13 @@ namespace example_01
             {
                 csv.Push(new MyData
                 {
+                    intNr = 30,
                     name = "name3",
                     val = 44.5
                 });
                 csv.Push(new MyData
                 {
+                    intNr = 35,
                     name = "name4",
                     val = 33.2
                 });
