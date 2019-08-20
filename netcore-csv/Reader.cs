@@ -19,13 +19,10 @@ namespace SearchAThing
             T current = null;
 
             /// <summary>
-            /// creates an object enumerator from csv pathfilename with given field and decimal separator
-            /// if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
-            /// (useful if can't evaluated at compile time using CsvHeaderAttribute.
+            /// creates an object enumerator from csv pathfilename with given field and decimal separator            
             /// </summary>
-            public CsvReaderEnumerator(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".",
-                IReadOnlyDictionary<string, string> propNameHeaderMapping = null) :
-                base(pathfilename, fieldSeparator, decimalSeparator, propNameHeaderMapping)
+            public CsvReaderEnumerator(string pathfilename, CsvOptions options = null) :
+                base(pathfilename, options)
             {
             }
 
@@ -167,9 +164,9 @@ namespace SearchAThing
             /// <summary>
             /// read csv from given pathfilename with field and decimal separator using templated object properties as descriptor for csv column headers to expect
             /// </summary>
-            public CsvReader(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".")
+            public CsvReader(string pathfilename, CsvOptions options = null)
             {
-                enumerator = new CsvReaderEnumerator<T>(pathfilename, fieldSeparator, decimalSeparator);
+                enumerator = new CsvReaderEnumerator<T>(pathfilename, options);
             }
 
             public IEnumerator<T> GetEnumerator() => enumerator;

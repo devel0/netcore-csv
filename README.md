@@ -1,7 +1,6 @@
 # netcore-csv
 
 [![NuGet Badge](https://buildstats.info/nuget/netcore-csv)](https://www.nuget.org/packages/netcore-csv/)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv?ref=badge_shield)
 
 .NET core CSV
 
@@ -9,7 +8,6 @@
 - [Quickstart](#quickstart)
   * [execution](#execution)
 - [How this project was built](#how-this-project-was-built)
-- [license scan](#license-scan)
 
 <hr/>
 
@@ -33,7 +31,7 @@ cd example
 - add reference to netcore-sci ( check latest version [here](https://www.nuget.org/packages/netcore-sci/) )
 
 ```sh
-dotnet add package netcore-csv --version 0.0.2
+dotnet add package netcore-csv --version 0.0.5
 ```
 
 if prefer to link source code directly to stepin with debugger add project reference instead
@@ -48,7 +46,13 @@ for some useful sci extensions include [netcore-sci](https://github.com/devel0/n
 dotnet add package netcore-sci --version 1.0.27
 ```
 
-- setup example code
+- setup example code ( see [examples](examples) )
+
+    - [example-01](examples/example-01) : first csv program
+    - [example-02](examples/example-01) : linq to csv
+    - [example-03](examples/example-01) : sci data
+
+following example-03
 
 ```csharp
 using System;
@@ -56,9 +60,16 @@ using System.Linq;
 using SearchAThing;
 using System.Diagnostics;
 using SearchAThing.CSV;
+using System.Collections.Generic;
 
 namespace test
 {
+
+    public enum TestEnum
+    {
+        atype,
+        btype,
+    }
 
     public class MyData
     {
@@ -89,6 +100,7 @@ namespace test
         public double v20 { get; set; }
         [CsvColumnOrder(0)]
         public double firstcol { get; set; }
+        public TestEnum envar { get; set; }
     }
 
     class Program
@@ -100,9 +112,10 @@ namespace test
                 var stopw = new Stopwatch();
                 stopw.Start();
 
+                // <LangVersion>8.0</LangVersion>
                 using var csv = new CsvWriter<MyData>("test.csv");
 
-                var rnd = new Random();                
+                var rnd = new Random();
 
                 for (int i = 0; i < CNT; ++i)
                 {
@@ -130,7 +143,8 @@ namespace test
                         v20 = rnd.NextDouble() * 1e9,
                         i10 = rnd.Next(1, 10),
                         i20 = rnd.Next(1, 20),
-                        s1 = $"str:[{rnd.Next()}]"
+                        s1 = $"str:[{rnd.Next()}]",
+                        envar = TestEnum.atype,
                     };
 
                     csv.Push(d);
@@ -144,6 +158,9 @@ namespace test
                 stopw.Start();
 
                 using var csv = new CsvReader<MyData>("test.csv");
+
+                var customHeader = new Dictionary<string, string>();
+                customHeader.Add("v3Mean", "v3Mean (Custom)");
 
                 csv
                     .GroupBy(w => w.i10)
@@ -159,19 +176,22 @@ namespace test
                         v5Mean = w.Select(w => w.v5).Mean(),
                         v6Mean = w.Select(w => w.v6).Mean(),
                         v7Mean = w.Select(w => w.v7).Mean(),
-                        v8Mean = w.Select(w => w.v8).Mean(),                        
-                        v9Mean = w.Select(w => w.v9).Mean(),                        
-                        v10Mean = w.Select(w => w.v10).Mean(),                        
-                        v11Mean = w.Select(w => w.v11).Mean(),                        
-                        v12Mean = w.Select(w => w.v12).Mean(),                        
-                        v13Mean = w.Select(w => w.v13).Mean(),                        
-                        v14Mean = w.Select(w => w.v14).Mean(),                        
-                        v15Mean = w.Select(w => w.v15).Mean(),                        
-                        v16Mean = w.Select(w => w.v16).Mean(),                        
-                        v17Mean = w.Select(w => w.v17).Mean(),                                                
-                        v18Mean = w.Select(w => w.v18).Mean(),                                                
-                        v20Mean = w.Select(w => w.v20).Mean(),                       
-                    }).ToCSV("result.csv");
+                        v8Mean = w.Select(w => w.v8).Mean(),
+                        v9Mean = w.Select(w => w.v9).Mean(),
+                        v10Mean = w.Select(w => w.v10).Mean(),
+                        v11Mean = w.Select(w => w.v11).Mean(),
+                        v12Mean = w.Select(w => w.v12).Mean(),
+                        v13Mean = w.Select(w => w.v13).Mean(),
+                        v14Mean = w.Select(w => w.v14).Mean(),
+                        v15Mean = w.Select(w => w.v15).Mean(),
+                        v16Mean = w.Select(w => w.v16).Mean(),
+                        v17Mean = w.Select(w => w.v17).Mean(),
+                        v18Mean = w.Select(w => w.v18).Mean(),
+                        v20Mean = w.Select(w => w.v20).Mean(),
+                    }).ToCSV("result.csv", new CsvOptions
+                    {
+                        PropNameHeaderMapping = customHeader
+                    });
 
                 System.Console.WriteLine($"queried [{CNT}] rows in {stopw.Elapsed}");
             }
@@ -184,8 +204,7 @@ namespace test
 ### execution
 
 ```sh
-devel0@main:/opensource/devel0/netcore-csv$ cd example/
-devel0@main:/opensource/devel0/netcore-csv/example$ dotnet run
+devel0@main:/opensource/devel0/netcore-csv$ dotnet run --project examples/example-03
 written [500000] rows in 00:00:17.7151366
 queried [500000] rows in 00:00:13.8399370
 ```
@@ -227,15 +246,17 @@ cd netcore-csv
 dotnet add package netcore-util --version 1.0.6
 cd ..
 
-cd example
-dotnet add reference ../netcore-csv/netcore-csv.csproj
+mkdir examples
+cd examples
+for i in 01 02 03; do
+    dotnet new console -n example-$i
+    cd example-$i
+    dotnet add reference ../../netcore-csv/netcore-csv.csproj
+    cd ..
+done
 cd ..
 
 dotnet sln netcore-csv.sln add netcore-csv/netcore-csv.csproj
-dotnet sln netcore-csv.sln add example/example.csproj
+for i in 01 02 03; do dotnet sln netcore-csv.sln add examples/example-$i/example-$i.csproj; done
 dotnet build
 ```
-
-## license scan
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdevel0%2Fnetcore-csv?ref=badge_large)

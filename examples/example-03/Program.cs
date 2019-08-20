@@ -55,6 +55,7 @@ namespace test
                 var stopw = new Stopwatch();
                 stopw.Start();
 
+                // <LangVersion>8.0</LangVersion>
                 using var csv = new CsvWriter<MyData>("test.csv");
 
                 var rnd = new Random();
@@ -130,7 +131,10 @@ namespace test
                         v17Mean = w.Select(w => w.v17).Mean(),
                         v18Mean = w.Select(w => w.v18).Mean(),
                         v20Mean = w.Select(w => w.v20).Mean(),
-                    }).ToCSV("result.csv", fieldSeparator: ",", decimalSeparator: ".", customHeader);
+                    }).ToCSV("result.csv", new CsvOptions
+                    {
+                        PropNameHeaderMapping = customHeader
+                    });
 
                 System.Console.WriteLine($"queried [{CNT}] rows in {stopw.Elapsed}");
             }

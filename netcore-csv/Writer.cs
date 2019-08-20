@@ -16,17 +16,23 @@ namespace SearchAThing
         /// </summary>
         public class CsvWriter<T> : CsvFile<T>, IDisposable where T : class
         {
-            StreamWriter sw = null;            
+            StreamWriter sw = null;
 
             /// <summary>
-            /// construct a csv writer to write on given filename with field and decimal separators.
-            /// if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
-            /// (useful if can't evaluated at compile time using CsvHeaderAttribute.
+            /// construct a csv writer to write on given filename with field and decimal separators.            
             /// </summary>
-            public CsvWriter(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".",
-                IReadOnlyDictionary<string, string> propNameHeaderMapping = null) :
-                base(pathfilename, fieldSeparator, decimalSeparator, propNameHeaderMapping)
-            {                
+            public CsvWriter(string pathfilename, CsvOptions opts = null) :
+                base(pathfilename, opts)
+            {
+            }
+
+            /// <summary>
+            /// construct a csv writer to write on given filename with field and decimal separators.            
+            /// data will appended if file exists
+            /// </summary>
+            public CsvWriter(string pathfilename, bool append, CsvOptions opts = null) :
+                base(pathfilename, append, opts)
+            {
             }
 
             /// <summary>
@@ -37,13 +43,22 @@ namespace SearchAThing
                 // write header row ( if first )
                 if (sw == null)
                 {
-                    sw = new StreamWriter(Pathfilename);
-
-                    foreach (var (col, idx, isLast) in Columns.WithIndexIsLast())
+                    var outHdr = true;
+                    if (AppendMode)
                     {
-                        sw.Write($"\"{col.Header}\"{(isLast ? "" : FieldSeparator)}");
+                        outHdr = false;
+                        if (File.Exists(Pathfilename) && new FileInfo(Pathfilename).Length == 0) outHdr = true;
                     }
-                    sw.WriteLine();
+                    sw = new StreamWriter(Pathfilename, AppendMode);
+
+                    if (outHdr)
+                    {
+                        foreach (var (col, idx, isLast) in Columns.WithIndexIsLast())
+                        {
+                            sw.Write($"\"{col.Header}\"{(isLast ? "" : FieldSeparator)}");
+                        }
+                        sw.WriteLine();
+                    }
                 }
 
                 // write data row            
@@ -95,11 +110,9 @@ namespace SearchAThing
         /// if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
         /// (useful if can't evaluated at compile time using CsvHeaderAttribute.
         /// </summary>
-        public static void ToCSV<T>(this IEnumerable<T> coll,
-            string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".",
-            IReadOnlyDictionary<string, string> propNameHeaderMapping = null) where T : class
+        public static void ToCSV<T>(this IEnumerable<T> coll, string pathfilename, CsvOptions options = null) where T : class
         {
-            using var csv = new CsvWriter<T>(pathfilename, fieldSeparator, decimalSeparator, propNameHeaderMapping);
+            using var csv = new CsvWriter<T>(pathfilename, options);
 
             foreach (var x in coll) csv.Push(x);
         }
