@@ -30,7 +30,7 @@ namespace SearchAThing
             public Dictionary<string, string> PropNameHeaderMapping { get; set; } = null;
 
             /// <summary>
-            /// custom function to map property name to csv header
+            /// custom function to map property name to csv header; by default retun null to leave propname
             /// </summary>            
             public Func<string, string> PropNameToHeaderFunc { get; set; } = null;
 

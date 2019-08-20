@@ -13,12 +13,12 @@ namespace example_01
     }
 
     class Program
-    {        
+    {
         static void Main(string[] args)
         {
             var pathfilename = "output.csv";
 
-            using (var csv = new CsvWriter<MyData>(pathfilename))
+            using (var csv = new CsvWriter<MyData>(pathfilename))                
             {
                 csv.Push(new MyData
                 {
@@ -50,7 +50,7 @@ namespace example_01
             // read back data            
             System.Console.WriteLine(File.ReadAllText(pathfilename));
 
-            var sum = new CsvReader<MyData>(pathfilename).Sum(w=>w.val);
+            var sum = new CsvReader<MyData>(pathfilename).Sum(w => w.val);
 
             System.Console.WriteLine($"sum of values = {sum}");
         }

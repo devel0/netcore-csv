@@ -17,6 +17,7 @@
 - [CSVWriter](doc/api/CSV/CsvWriter-1.md)
 - [CsvColumnHeaderAttribute](doc/api/CSV/CsvColumnHeaderAttribute.md)
 - [CsvColumnOrderAttribute](doc/api/CSV/CsvColumnOrderAttribute.md)
+- [CSVOptions](doc/api/CSV/CsvOptions.md)
 - [Extensions](doc/api/Extensions.md)
 
 ## Quickstart
@@ -159,6 +160,7 @@ namespace test
 
                 using var csv = new CsvReader<MyData>("test.csv");
 
+                // optional custom header
                 var customHeader = new Dictionary<string, string>();
                 customHeader.Add("v3Mean", "v3Mean (Custom)");
 
@@ -188,14 +190,23 @@ namespace test
                         v17Mean = w.Select(w => w.v17).Mean(),
                         v18Mean = w.Select(w => w.v18).Mean(),
                         v20Mean = w.Select(w => w.v20).Mean(),
-                    }).ToCSV("result.csv", new CsvOptions
+                    }).ToCSV("result.csv",
+                    new CsvOptions() // optional
                     {
-                        PropNameHeaderMapping = customHeader
+                        PropNameHeaderMapping = customHeader,
+                        PropNameToHeaderFunc = (propname) =>
+                            // <LangVersion>8.0</LangVersion>
+                            propname switch
+                            {
+                                "v4Mean" => "v4Mean (Custom)",
+                                _ => null,
+                            }
                     });
 
                 System.Console.WriteLine($"queried [{CNT}] rows in {stopw.Elapsed}");
             }
         }
+
     }
 
 }
@@ -204,7 +215,7 @@ namespace test
 ### execution
 
 ```sh
-devel0@main:/opensource/devel0/netcore-csv$ dotnet run --project examples/example-03
+devel0@main:/opensource/devel0/netcore-csv$ dotnet run -p examples/example-03
 written [500000] rows in 00:00:17.7151366
 queried [500000] rows in 00:00:13.8399370
 ```

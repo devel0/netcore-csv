@@ -26,5 +26,5 @@ public class CsvOptions
 |[DecimalSeparator](CsvOptions/DecimalSeparator.md)|csv number decimal separator
 |[FieldSeparator](CsvOptions/FieldSeparator.md)|csv field separator
 |[PropNameHeaderMapping](CsvOptions/PropNameHeaderMapping.md)|custom dictionary to map property name to csv header
-|[PropNameToHeaderFunc](CsvOptions/PropNameToHeaderFunc.md)|custom function to map property name to csv header
+|[PropNameToHeaderFunc](CsvOptions/PropNameToHeaderFunc.md)|custom function to map property name to csv header; by default retun null to leave propname
 ## Conversions
