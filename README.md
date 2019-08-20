@@ -55,7 +55,7 @@ dotnet add package netcore-sci --version 1.0.27
 
 ### example-01
 
-```sharp
+```csharp
 using SearchAThing.CSV;
 using System.Linq;
 using System.IO;
