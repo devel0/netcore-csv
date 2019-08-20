@@ -1,7 +1,10 @@
-# DecimalSeparatorIsInvariant field (SearchAThing.CSV.CsvFile<T>)
-(No Description)
+# DecimalSeparatorIsInvariant property (SearchAThing.CSV.CsvFile<T>)
+_(No Description)_
 
 ## Signature
 ```csharp
-public readonly bool DecimalSeparatorIsInvariant;
+public bool DecimalSeparatorIsInvariant
+{
+    get;
+}
 ```

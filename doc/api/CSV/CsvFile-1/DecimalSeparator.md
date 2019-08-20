@@ -1,7 +1,10 @@
-# DecimalSeparator field (SearchAThing.CSV.CsvFile<T>)
-(No Description)
+# DecimalSeparator property (SearchAThing.CSV.CsvFile<T>)
+_(No Description)_
 
 ## Signature
 ```csharp
-public readonly string DecimalSeparator;
+public string DecimalSeparator
+{
+    get;
+}
 ```

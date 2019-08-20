@@ -14,7 +14,7 @@ public class CsvReader : System.Collections.Generic.IEnumerable<T>, System.Colle
 ## Constructors
 |**Name**|**Summary**|
 |---|---|
-|[CsvReader<T>(string, string, string)](CsvReader-1/ctors.md)|read csv from given pathfilename with field and decimal separator using templated object properties as descriptor for csv column headers to expect|
+|[CsvReader<T>(string, CsvOptions)](CsvReader-1/ctors.md)|read csv from given pathfilename with field and decimal separator using templated object properties as descriptor for csv column headers to expect|
 ## Methods
 |**Name**|**Summary**|
 |---|---|

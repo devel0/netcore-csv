@@ -13,7 +13,8 @@ public abstract class CsvFile
 ## Constructors
 |**Name**|**Summary**|
 |---|---|
-|[CsvFile<T>(string, string, string, IReadOnlyDictionary<string, string>)](CsvFile-1/ctors.md)|csv reader/writer base class.<br/>            if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.<br/>            (useful if can't evaluated at compile time using CsvHeaderAttribute).|
+|[CsvFile<T>(string, CsvOptions)](CsvFile-1/ctors.md)|csv reader/writer base class.|
+|[CsvFile<T>(string, bool, CsvOptions)](CsvFile-1/ctors.md#csvfiletstring-bool-csvoptions)|csv reader/writer base class.|
 ## Methods
 |**Name**|**Summary**|
 |---|---|
@@ -24,11 +25,11 @@ public abstract class CsvFile
 ## Properties
 |**Name**|**Summary**|
 |---|---|
+|[AppendMode](CsvFile-1/AppendMode.md)|if file exists with size great than 0 then header will not placed<br/>            else file will overwritten with new starting header,
 |[Columns](CsvFile-1/Columns.md)|
-## Fields
-- [DecimalSeparator](CsvFile-1/DecimalSeparator.md)
-- [DecimalSeparatorIsInvariant](CsvFile-1/DecimalSeparatorIsInvariant.md)
-- [FieldSeparator](CsvFile-1/FieldSeparator.md)
-- [Pathfilename](CsvFile-1/Pathfilename.md)
-- [PropNameHeaderMapping](CsvFile-1/PropNameHeaderMapping.md)
+|[DecimalSeparator](CsvFile-1/DecimalSeparator.md)|
+|[DecimalSeparatorIsInvariant](CsvFile-1/DecimalSeparatorIsInvariant.md)|
+|[FieldSeparator](CsvFile-1/FieldSeparator.md)|
+|[Options](CsvFile-1/Options.md)|
+|[Pathfilename](CsvFile-1/Pathfilename.md)|
 ## Conversions

@@ -1,12 +1,30 @@
 # SearchAThing.CSV.CsvFile<T> constructors
-## CsvFile<T>(string, string, string, IReadOnlyDictionary<string, string>)
+## CsvFile<T>(string, CsvOptions)
 csv reader/writer base class.
-            if specified propNameHeaderMapping allor to specify mapping between propertyname and a custom header.
-            (useful if can't evaluated at compile time using CsvHeaderAttribute).
 
 ### Signature
 ```csharp
-public CsvFile<T>(string pathfilename, string fieldSeparator = ",", string decimalSeparator = ".", IReadOnlyDictionary<string, string> propNameHeaderMapping = null)
+public CsvFile<T>(string pathfilename, CsvOptions options)
 ```
+### Remarks
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr/>
+
+## CsvFile<T>(string, bool, CsvOptions)
+csv reader/writer base class.
+
+### Signature
+```csharp
+public CsvFile<T>(string pathfilename, bool append, CsvOptions options)
+```
+### Parameters
+- `pathfilename`: (No Description)
+- `append`: if file exists with size great than 0 then header will not placed
+            else file will overwritten with new starting header,
+- `options`: (No Description)
+
 ### Remarks
 

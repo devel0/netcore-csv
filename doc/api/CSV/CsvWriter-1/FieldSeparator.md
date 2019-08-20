@@ -1,7 +1,10 @@
-# FieldSeparator field (SearchAThing.CSV.CsvFile<T>)
-(No Description)
+# FieldSeparator property (SearchAThing.CSV.CsvFile<T>)
+_(No Description)_
 
 ## Signature
 ```csharp
-public readonly string FieldSeparator;
+public override string FieldSeparator
+{
+    get;
+}
 ```

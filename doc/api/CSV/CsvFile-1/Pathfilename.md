@@ -1,7 +1,11 @@
-# Pathfilename field (SearchAThing.CSV.CsvFile<T>)
-(No Description)
+# Pathfilename property (SearchAThing.CSV.CsvFile<T>)
+_(No Description)_
 
 ## Signature
 ```csharp
-public readonly string Pathfilename;
+public string Pathfilename
+{
+    get;
+    set;
+}
 ```
