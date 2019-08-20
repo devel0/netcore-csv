@@ -75,10 +75,10 @@ namespace SearchAThing
                             sw.Write($"{str}{(isLast ? "" : FieldSeparator)}");
                         }
                     }
-                    else if (col.IsText)
+                    else if (col.IsText || col.Property.PropertyType.IsEnum)
                     {
                         sw.Write($"\"{val}\"{(isLast ? "" : FieldSeparator)}");
-                    }
+                    }                    
                     else
                     {
                         sw.Write($"{val}{(isLast ? "" : FieldSeparator)}");

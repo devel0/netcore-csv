@@ -109,7 +109,7 @@ namespace SearchAThing
                                     break;
                             }
                         }
-                        else if (col.IsText)
+                        else if (col.IsText || col.Property.PropertyType.IsEnum)
                         {
                             prop = ss[idx].StripBegin('"').StripEnd('"');
                         }
