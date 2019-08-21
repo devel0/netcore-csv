@@ -120,9 +120,7 @@ namespace example_01
             }
 
             // read back data            
-            System.Console.WriteLine(File.ReadAllText(pathfilename));
-
-            var sum = new CsvReader<MyData>(pathfilename).Sum(w => w.val);            
+            System.Console.WriteLine(File.ReadAllText(pathfilename));            
 
             var q = new CsvReader<MyData>(pathfilename)
                 .GroupBy(w => w.enumVal)
@@ -364,12 +362,12 @@ cd examples
 for i in 01 02 03; do
     dotnet new console -n example-$i
     cd example-$i
-    dotnet add reference ../../netcore-csv/netcore-csv.csproj
+    dotnet add reference ../../netcore-csv
     cd ..
 done
 cd ..
 
-dotnet sln netcore-csv.sln add netcore-csv/netcore-csv.csproj
-for i in 01 02 03; do dotnet sln netcore-csv.sln add examples/example-$i/example-$i.csproj; done
+dotnet sln netcore-csv.sln add netcore-csv
+for i in 01 02 03; do dotnet sln netcore-csv.sln add examples/example-$i; done
 dotnet build
 ```

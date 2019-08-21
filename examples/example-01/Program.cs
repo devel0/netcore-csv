@@ -62,9 +62,7 @@ namespace example_01
             }
 
             // read back data            
-            System.Console.WriteLine(File.ReadAllText(pathfilename));
-
-            var sum = new CsvReader<MyData>(pathfilename).Sum(w => w.val);            
+            System.Console.WriteLine(File.ReadAllText(pathfilename));            
 
             var q = new CsvReader<MyData>(pathfilename)
                 .GroupBy(w => w.enumVal)
