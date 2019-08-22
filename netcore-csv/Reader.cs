@@ -162,6 +162,11 @@ namespace SearchAThing
             CsvReaderEnumerator<T> enumerator = null;
 
             /// <summary>
+            /// underlying CsvFile
+            /// </summary>
+            public CsvFile<T> File => enumerator as CsvFile<T>;
+
+            /// <summary>
             /// read csv from given pathfilename with field and decimal separator using templated object properties as descriptor for csv column headers to expect
             /// </summary>
             public CsvReader(string pathfilename, CsvOptions options = null)
