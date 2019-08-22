@@ -24,4 +24,8 @@ public class CsvReader : System.Collections.Generic.IEnumerable<T>, System.Colle
 |[GetHashCode](CsvReader-1/GetHashCode.md)||
 |[GetType](CsvReader-1/GetType.md)||
 |[ToString](CsvReader-1/ToString.md)||
+## Properties
+|**Name**|**Summary**|
+|---|---|
+|[File](CsvReader-1/File.md)|underlying CsvFile
 ## Conversions
