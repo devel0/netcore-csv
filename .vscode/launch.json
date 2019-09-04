@@ -10,12 +10,13 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/examples/example-01/bin/Debug/netcoreapp3.0/example-01.dll",
+            "program": "${workspaceFolder}/examples/example-03/bin/Debug/netcoreapp3.0/example-03.dll",
             "args": [],
             // "cwd": "${workspaceFolder}/example",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "justMyCode": false
         },
         {
             "name": ".NET Core Attach",
