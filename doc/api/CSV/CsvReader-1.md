@@ -18,11 +18,12 @@ public class CsvReader : System.Collections.Generic.IEnumerable<T>, System.Colle
 ## Methods
 |**Name**|**Summary**|
 |---|---|
-|[Dispose](CsvReader-1/Dispose.md)||
+|[Dispose](CsvReader-1/Dispose.md)|dispose stream closing file|
 |[Equals](CsvReader-1/Equals.md)||
 |[GetEnumerator](CsvReader-1/GetEnumerator.md)||
 |[GetHashCode](CsvReader-1/GetHashCode.md)||
 |[GetType](CsvReader-1/GetType.md)||
+|[Reset](CsvReader-1/Reset.md)|reset from first row|
 |[ToString](CsvReader-1/ToString.md)||
 ## Properties
 |**Name**|**Summary**|
