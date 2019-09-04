@@ -30,6 +30,8 @@ namespace SearchAThing
 
             object IEnumerator.Current => this.Current;
 
+            bool resetRequest = true;
+
             /// <summary>
             /// verify if another row is available
             /// </summary>
@@ -44,8 +46,11 @@ namespace SearchAThing
                     {
                         current = null;
                         return false;
-                    }
+                    }                    
+                }
 
+                if (resetRequest)
+                {
                     var line = sr.ReadLine();
                     var ss = line.Split(FieldSeparator);
 
@@ -55,6 +60,8 @@ namespace SearchAThing
                         if (ss[idx] != $"\"{col.Header}\"")
                             throw new InvalidDataException($"expecting \"{col.Header}\" instead of {ss[idx]}");
                     }
+
+                    resetRequest = false;
                 }
 
                 // read data row
@@ -135,6 +142,7 @@ namespace SearchAThing
             /// </summary>
             public void Reset()
             {
+                resetRequest = true;
                 sr.BaseStream.Seek(0, SeekOrigin.Begin);
                 current = default(T);
             }
@@ -142,7 +150,7 @@ namespace SearchAThing
             /// <summary>
             /// dispose reader closing stream reader
             /// </summary>
-            public void Dispose()
+            internal void StreamDispose()
             {
                 if (sr != null)
                 {
@@ -150,6 +158,11 @@ namespace SearchAThing
                     sr.Dispose();
                 }
             }
+
+            public void Dispose()
+            {
+            }
+
         }
 
         /// <summary>
@@ -174,13 +187,24 @@ namespace SearchAThing
                 enumerator = new CsvReaderEnumerator<T>(pathfilename, options);
             }
 
+            /// <summary>
+            /// reset from first row
+            /// </summary>
+            public void Reset()
+            {
+                enumerator.Reset();
+            }
+
             public IEnumerator<T> GetEnumerator() => enumerator;
 
             IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
+            /// <summary>
+            /// dispose stream closing file
+            /// </summary>
             public void Dispose()
             {
-                enumerator.Dispose();
+                enumerator.StreamDispose();
             }
         }
 
