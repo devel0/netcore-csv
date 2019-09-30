@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
 
 namespace SearchAThing
 {
@@ -46,7 +47,7 @@ namespace SearchAThing
                     {
                         current = null;
                         return false;
-                    }                    
+                    }
                 }
 
                 if (resetRequest)
@@ -73,7 +74,40 @@ namespace SearchAThing
                     }
 
                     var line = sr.ReadLine();
-                    var ss = line.Split(FieldSeparator);
+                    var ss = new List<string>();
+                    var inStr = false;
+                    var token = new StringBuilder();
+                    for (int i = 0; i < line.Length; ++i)
+                    {
+                        if (!inStr && line[i] != FieldSeparator)
+                        {
+                            if (line[i] == StringDelimiter)
+                                inStr = true;
+                            else
+                                token.Append(line[i]);
+                        }
+                        else if (inStr)
+                        {
+                            if (line[i] != StringDelimiter)
+                            {
+                                token.Append(line[i]);
+                            }
+                            else if (i + 1 < line.Length && line[i + 1] == StringDelimiter)
+                            {
+                                token.Append(line[i]);
+                                ++i;
+                            }
+                            else
+                                inStr = false;
+                        }
+                        else if (line[i] == FieldSeparator)
+                        {
+                            ss.Add(token.ToString());
+                            token = new StringBuilder();
+                        }
+                    }
+                    ss.Add(token.ToString());
+                    //var ss = line.Split(FieldSeparator);
 
                     var obj = new T();
 
@@ -95,7 +129,7 @@ namespace SearchAThing
                                         if (DecimalSeparatorIsInvariant)
                                             prop = double.Parse(ss[idx], CultureInfo.InvariantCulture);
                                         else
-                                            prop = double.Parse(ss[idx].Replace(DecimalSeparator, "."), CultureInfo.InvariantCulture);
+                                            prop = double.Parse(ss[idx].Replace(DecimalSeparator, '.'), CultureInfo.InvariantCulture);
                                     }
                                     break;
                                 case CsvColumnNumberType.numberFloat:
@@ -103,7 +137,7 @@ namespace SearchAThing
                                         if (DecimalSeparatorIsInvariant)
                                             prop = float.Parse(ss[idx], CultureInfo.InvariantCulture);
                                         else
-                                            prop = float.Parse(ss[idx].Replace(DecimalSeparator, "."), CultureInfo.InvariantCulture);
+                                            prop = float.Parse(ss[idx].Replace(DecimalSeparator, '.'), CultureInfo.InvariantCulture);
                                     }
                                     break;
                                 case CsvColumnNumberType.numberDecimal:
@@ -111,15 +145,15 @@ namespace SearchAThing
                                         if (DecimalSeparatorIsInvariant)
                                             prop = decimal.Parse(ss[idx], CultureInfo.InvariantCulture);
                                         else
-                                            prop = decimal.Parse(ss[idx].Replace(DecimalSeparator, "."), CultureInfo.InvariantCulture);
+                                            prop = decimal.Parse(ss[idx].Replace(DecimalSeparator, '.'), CultureInfo.InvariantCulture);
                                     }
                                     break;
                             }
                         }
-                        else if (col.IsText || col.Property.PropertyType.IsEnum)
-                        {
-                            prop = ss[idx].StripBegin('"').StripEnd('"');
-                        }
+                        //else if (col.IsText || col.Property.PropertyType.IsEnum)
+                        //{
+                        //    prop = ss[idx].StripBegin('"').StripEnd('"');
+                        //}
                         else
                         {
                             prop = ss[idx];

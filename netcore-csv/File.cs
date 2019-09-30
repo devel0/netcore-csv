@@ -20,11 +20,13 @@ namespace SearchAThing
 
             public CsvOptions Options { get; private set; }
 
-            public string FieldSeparator => Options.FieldSeparator;
+            public char StringDelimiter => Options.StringDelimiter;
 
-            public string DecimalSeparator => Options.DecimalSeparator;
+            public char FieldSeparator => Options.FieldSeparator;
 
-            public bool DecimalSeparatorIsInvariant => DecimalSeparator == ".";
+            public char DecimalSeparator => Options.DecimalSeparator;
+
+            public bool DecimalSeparatorIsInvariant => DecimalSeparator == '.';
 
             List<CsvColumn> columns = null;
             public IReadOnlyList<CsvColumn> Columns => columns;

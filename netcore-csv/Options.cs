@@ -15,14 +15,19 @@ namespace SearchAThing
         {
 
             /// <summary>
+            /// csv string delimiter
+            /// </summary>            
+            public char StringDelimiter { get; set; } = '"';
+
+            /// <summary>
             /// csv field separator
             /// </summary>            
-            public string FieldSeparator { get; set; } = ",";
+            public char FieldSeparator { get; set; } = ',';
 
             /// <summary>
             /// csv number decimal separator
             /// </summary>
-            public string DecimalSeparator { get; set; } = ".";
+            public char DecimalSeparator { get; set; } = '.';
 
             /// <summary>
             /// custom dictionary to map property name to csv header

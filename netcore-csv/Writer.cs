@@ -55,7 +55,10 @@ namespace SearchAThing
                     {
                         foreach (var (col, idx, isLast) in Columns.WithIndexIsLast())
                         {
-                            sw.Write($"\"{col.Header}\"{(isLast ? "" : FieldSeparator)}");
+                            var str = col.Header;
+                            str = str.Replace($"{StringDelimiter}", $"\\{StringDelimiter}");
+                            sw.Write($"{StringDelimiter}{str}{StringDelimiter}");
+                            if (!isLast) sw.Write(FieldSeparator);
                         }
                         sw.WriteLine();
                     }
@@ -68,20 +71,28 @@ namespace SearchAThing
                     if (col.IsNumber)
                     {
                         if (DecimalSeparatorIsInvariant)
-                            sw.Write(Invariant($"{val}{(isLast ? "" : FieldSeparator)}"));
+                        {
+                            sw.Write(Invariant($"{val}"));
+                            if (!isLast) sw.Write(FieldSeparator);
+                        }
                         else
                         {
-                            var str = Invariant($"{val}").Replace(".", DecimalSeparator);
-                            sw.Write($"{str}{(isLast ? "" : FieldSeparator)}");
+                            var str = Invariant($"{val}").Replace('.', DecimalSeparator);
+                            sw.Write($"{str}");
+                            if (!isLast) sw.Write(FieldSeparator);
                         }
                     }
                     else if (col.IsText || col.Property.PropertyType.IsEnum)
                     {
-                        sw.Write($"\"{val}\"{(isLast ? "" : FieldSeparator)}");
-                    }                    
+                        var str = val.ToString();
+                        str = str.Replace($"{StringDelimiter}", $"{StringDelimiter}{StringDelimiter}");
+                        sw.Write($"{StringDelimiter}{str}{StringDelimiter}");
+                        if (!isLast) sw.Write(FieldSeparator);
+                    }
                     else
                     {
-                        sw.Write($"{val}{(isLast ? "" : FieldSeparator)}");
+                        sw.Write($"{val}");
+                        if (!isLast) sw.Write(FieldSeparator);
                     }
                 }
                 sw.WriteLine();
