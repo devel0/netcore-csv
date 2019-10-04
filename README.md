@@ -20,6 +20,10 @@
 - [CSVOptions](doc/api/CSV/CsvOptions.md)
 - [Extensions](doc/api/Extensions.md)
 
+## TODO
+
+- thread safe support on write
+
 ## Quickstart
 
 - create console project
