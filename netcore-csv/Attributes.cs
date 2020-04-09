@@ -36,6 +36,18 @@ namespace SearchAThing
 
         }
 
+        /// <summary>
+        /// ignore specified property from being serialized to/from csv
+        /// </summary>
+        public class CsvIgnoreAttribute : Attribute
+        {
+            
+            public CsvIgnoreAttribute()
+            {                
+            }
+
+        }
+
     }
 
 }

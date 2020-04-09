@@ -66,6 +66,9 @@ namespace SearchAThing
                 var props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
                 foreach (var (prop, propIdx, isLast) in props.Where(p => p.CanRead).WithIndexIsLast())
                 {
+                    var qi = prop.GetCustomAttributes(true).OfType<CsvIgnoreAttribute>();
+                    if (qi.Count() > 0) continue;
+
                     var header = prop.Name;
                     {
                         var q = prop.GetCustomAttributes(true).OfType<CsvHeaderAttribute>();

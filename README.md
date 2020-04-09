@@ -347,6 +347,10 @@ devel0@main:/opensource/devel0/netcore-csv/example$ head -n 3 result.csv
 
 ![](doc/test-result-comparision.png)
 
+## other options
+
+to exclude some property from being serialized to/from csv use CsvIgnore attribute
+
 ## How this project was built
 
 ```sh
