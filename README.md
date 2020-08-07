@@ -4,21 +4,16 @@
 
 .NET core CSV
 
-- [API Documentation](#api-documentation)
+- [API](#api)
 - [Quickstart](#quickstart)
   * [execution](#execution)
 - [How this project was built](#how-this-project-was-built)
 
 <hr/>
 
-## API Documentation
+## API
 
-- [CSVReader](doc/api/CSV/CsvReader-1.md)
-- [CSVWriter](doc/api/CSV/CsvWriter-1.md)
-- [CsvColumnHeaderAttribute](doc/api/CSV/CsvColumnHeaderAttribute.md)
-- [CsvColumnOrderAttribute](doc/api/CSV/CsvColumnOrderAttribute.md)
-- [CSVOptions](doc/api/CSV/CsvOptions.md)
-- [Extensions](doc/api/Extensions.md)
+- [API](https://devel0.github.io/netcore-csv/api)
 
 ## TODO
 
