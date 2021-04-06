@@ -58,7 +58,7 @@ namespace SearchAThing
                     foreach (var (col, idx, isLast) in Columns.WithIndexIsLast())
                     {
                         // TODO: manage string escape ( fieldSeparator can included into double quotes string )
-                        if (ss[idx] != $"\"{col.Header}\"")
+                        if (ss[idx] != $"\"{col.Header}\"" && ss[idx] != col.Header)
                             throw new InvalidDataException($"expecting \"{col.Header}\" instead of {ss[idx]}");
                     }
 
