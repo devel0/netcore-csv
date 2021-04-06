@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "Z:/netcore-csv/docfx",
+  "source_base_path": "/home/devel0/Documents/opensource/netcore-csv/docfx",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvColumn.html",
-          "hash": "Ery9kLDZ3zVpRse8+/PpFw=="
+          "hash": "EzhfY2HPxaVAKdkSv5HEaA=="
         }
       },
       "is_incremental": false,
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvColumnNumberType.html",
-          "hash": "lTVPGx+hJqZ14Dn5jlCtuA=="
+          "hash": "Nc5jVTLXaowI/ndcqVAHCg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvColumnOrderAttribute.html",
-          "hash": "m6fc8rgb1rvrwmyNY7bF6w=="
+          "hash": "nIxQvaMDNeZJb/lqxvHBuQ=="
         }
       },
       "is_incremental": false,
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvColumnTextType.html",
-          "hash": "5JvNlcXPEUH/K6It5VJiAg=="
+          "hash": "BuIOR3hFszkwDn5nPrtGsA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvFile-1.html",
-          "hash": "mTOZcxoOkG81ZGjmV+Vovw=="
+          "hash": "dNDYAEOhsqP7pXl06JRIOw=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvHeaderAttribute.html",
-          "hash": "/2vG48Glbf8LrffW8w6/eA=="
+          "hash": "BkM+kR5l7FRTJPf6eFHyrw=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvIgnoreAttribute.html",
-          "hash": "DC4cPf1fgyHuygVINznzKg=="
+          "hash": "kbyyHbSzAYsbgWiqauG7ig=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvOptions.html",
-          "hash": "KEf3I1CvT9dI4q2QVYvegw=="
+          "hash": "fffw25NE5H4Mz0+bRos9fA=="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvReader-1.html",
-          "hash": "AKNUATP8nBh44lUQZ2QmZg=="
+          "hash": "ciMMWtFHVW8JuFv1l1rwYw=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.CsvWriter-1.html",
-          "hash": "qK5fsND1HElUjZRE0fEyAA=="
+          "hash": "5Dg/zPoOv+u+dOGNoVhk+A=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.CSV.html",
-          "hash": "i9MNKhzWlvW26CuqH1FNxA=="
+          "hash": "d7voDhQdMLUAn2KIWOhgDA=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.Extensions.html",
-          "hash": "aHYEBClro21mcf9eZc4goA=="
+          "hash": "EjUYb9hyNs8K4xKMrqQwNg=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SearchAThing.html",
-          "hash": "54Ux4FTGAPKAH0zshtU8ug=="
+          "hash": "ymLdGdqCUccgTf+mTmTulQ=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "yFdXn0Bm5D8IeKfQkk7rsQ=="
+          "hash": "M5jbpzxxEaEPAGogZ+LHbA=="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "v0NQoEccBbuFV6huiRH+xg=="
+          "hash": "og0ty0/THG6J+LvddvyGXg=="
         }
       },
       "is_incremental": false,
@@ -216,7 +216,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "fbJOjfdpOtCVVAvwyKw0WQ=="
+          "hash": "tqRNudip0eB1E/1ZUecM5g=="
         }
       },
       "is_incremental": false,
@@ -238,23 +238,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 13,
-          "skipped_file_count": 4
+          "skipped_file_count": 0
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -267,8 +269,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0
