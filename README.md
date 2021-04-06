@@ -4,20 +4,24 @@
 
 .NET core CSV
 
-- [API](#api)
-- [Quickstart](#quickstart)
-  * [execution](#execution)
-- [How this project was built](#how-this-project-was-built)
+- [API](https://devel0.github.io/netcore-csv/api)
+- [Changelog](https://github.com/devel0/netcore-util/commits/master)
 
 <hr/>
 
-## API
+<!-- TOC -->
+* [Quickstart](#quickstart)
+* [keynotes](#keynotes)
+* [examples](#examples)
+  + [example-01](#example-01)
+  + [example-02](#example-02)
+  + [example-03](#example-03)
+* [other options](#other-options)
+* [TODO](#todo)
+* [How this project was built](#how-this-project-was-built)
+<!-- TOCEND -->
 
-- [API](https://devel0.github.io/netcore-csv/api)
-
-## TODO
-
-- thread safe support on write
+<hr/>
 
 ## Quickstart
 
@@ -31,7 +35,7 @@ cd example
 - add reference to netcore-sci ( check latest version [here](https://www.nuget.org/packages/netcore-sci/) )
 
 ```sh
-dotnet add package netcore-csv --version 0.0.5
+dotnet add package netcore-csv --version 0.1.0
 ```
 
 if prefer to link source code directly to stepin with debugger add project reference instead
@@ -43,7 +47,7 @@ dotnet add reference path_to/netcore-csv/netcore-csv.csproj
 for some useful sci extensions include [netcore-sci](https://github.com/devel0/netcore-sci#quickstart)
 
 ```
-dotnet add package netcore-sci --version 1.0.27
+dotnet add package netcore-sci --version 1.26.0
 ```
 
 - setup example code ( see [examples](examples) )
@@ -51,6 +55,14 @@ dotnet add package netcore-sci --version 1.0.27
     - [example-01](examples/example-01) : first csv program
     - [example-02](examples/example-01) : linq to csv
     - [example-03](examples/example-01) : sci data
+
+## keynotes
+
+- reader requires a class type to describe field types
+- writer can work directly from anonymous type ( see [example02](#example-02) )
+- colum header can be overriden using `CsvHeader` property ( see [example3](#example-03) )
+
+## examples
 
 ### example-01
 
@@ -150,6 +162,52 @@ namespace example_01
 enum:enumA sum:11.2
 enum:enumB sum:13.4
 enum:unknown sum:77.7
+```
+
+### example-02
+
+```csharp
+using System.IO;
+using System.Linq;
+using SearchAThing;
+
+namespace example_02
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var pathfilename = "output.csv";
+
+            new[] { 1, 2, 3 }.Select(w => new
+            {
+                str = $"string with val={w}",
+                val = w
+            }).ToCSV(pathfilename, new SearchAThing.CSV.CsvOptions()
+            {
+                PropNameToHeaderFunc = (propName) =>
+                {
+                    switch (propName)
+                    {
+                        case "val": return "Value";
+                    }
+                    return null;
+                }
+            });
+
+            System.Console.WriteLine(File.ReadAllText(pathfilename));
+        }
+    }
+}
+```
+
+output
+
+```
+"str","Value"
+"string with val=1",1
+"string with val=2",2
+"string with val=3",3
 ```
 
 ### example-03
@@ -345,6 +403,10 @@ devel0@main:/opensource/devel0/netcore-csv/example$ head -n 3 result.csv
 ## other options
 
 to exclude some property from being serialized to/from csv use CsvIgnore attribute
+
+## TODO
+
+- thread safe support on write
 
 ## How this project was built
 
