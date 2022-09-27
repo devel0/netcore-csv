@@ -4,7 +4,7 @@
 
 .NET core CSV
 
-- [API](https://devel0.github.io/netcore-csv/api)
+- [API](https://devel0.github.io/netcore-csv/html/annotated.html)
 - [Changelog](https://github.com/devel0/netcore-csv/commits/master)
 
 <hr/>
