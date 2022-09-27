@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,76,83"/>
+<area shape="rect" id="node2" href="$class_search_a_thing_1_1_c_s_v_1_1_csv_column_order_attribute.html" title="allow to specify column order respect other object properties" alt="" coords="124,5,296,32"/>
+<area shape="rect" id="node3" href="$class_search_a_thing_1_1_c_s_v_1_1_csv_header_attribute.html" title="allow to specify custom header instead of use property name" alt="" coords="141,56,279,83"/>
+<area shape="rect" id="node4" href="$class_search_a_thing_1_1_c_s_v_1_1_csv_ignore_attribute.html" title="ignore specified property from being serialized to/from csv" alt="" coords="145,107,275,133"/>
+</map>

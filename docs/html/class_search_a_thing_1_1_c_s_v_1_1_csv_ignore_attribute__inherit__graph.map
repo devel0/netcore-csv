@@ -1,0 +1,4 @@
+<map id="CsvIgnoreAttribute" name="CsvIgnoreAttribute">
+<area shape="rect" id="node1" title="ignore specified property from being serialized to/from csv" alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="35,5,106,32"/>
+</map>
