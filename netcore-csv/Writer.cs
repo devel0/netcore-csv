@@ -84,7 +84,7 @@ namespace SearchAThing
                     }
                     else if (col.IsText || col.Property.PropertyType.IsEnum)
                     {
-                        var str = val.ToString();
+                        var str = val?.ToString() ?? "";
                         str = str.Replace($"{StringDelimiter}", $"{StringDelimiter}{StringDelimiter}");
                         sw.Write($"{StringDelimiter}{str}{StringDelimiter}");
                         if (!isLast) sw.Write(FieldSeparator);
