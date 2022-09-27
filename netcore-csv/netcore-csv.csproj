@@ -1,11 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <LangVersion>preview</LangVersion>
+		<LangVersion>10</LangVersion>
+		<Nullable>enable</Nullable>        
         <RootNamespace>SearchAThing.CSV</RootNamespace>
         <PackageId>netcore-csv</PackageId>
-        <PackageVersion>0.1.0</PackageVersion>
+        <PackageVersion>0.2.0</PackageVersion>
         <Title>net core csv reader/writer</Title>
         <Description>write an object enumerable to csv and read back allowing to use linq</Description>
         <Authors>Lorenzo Delana</Authors>
@@ -14,6 +15,6 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="netcore-util" Version="1.9.1" />
+        <PackageReference Include="netcore-util" Version="4.3.1" />
     </ItemGroup>
 </Project>
