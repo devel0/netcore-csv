@@ -23,6 +23,12 @@
 
 <hr/>
 
+:point_right: **This library is outdated**
+- lacks of DateTime type, etc.
+- consider [CsvHelper](https://github.com/JoshClose/CsvHelper) project as a better alternative
+
+<hr/>
+
 ## Quickstart
 
 - create console project
