@@ -2,6 +2,12 @@
 
 [![NuGet Badge](https://buildstats.info/nuget/netcore-csv)](https://www.nuget.org/packages/netcore-csv/)
 
+:point_right: **This library is outdated**
+- lacks of DateTime type, etc.
+- consider [CsvHelper](https://github.com/JoshClose/CsvHelper) project as a better alternative
+
+<hr/>
+
 .NET core CSV
 
 - [API](https://devel0.github.io/netcore-csv/html/annotated.html)
@@ -20,12 +26,6 @@
 * [TODO](#todo)
 * [How this project was built](#how-this-project-was-built)
 <!-- TOCEND -->
-
-<hr/>
-
-:point_right: **This library is outdated**
-- lacks of DateTime type, etc.
-- consider [CsvHelper](https://github.com/JoshClose/CsvHelper) project as a better alternative
 
 <hr/>
 
